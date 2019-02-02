@@ -26,10 +26,10 @@
 
 ## Документация
 
-* iikoBiz API: https://docs.google.com/document/d/1pRQNIn46GH1LVqzBUY5TdIIUuSCOl-A_xeCBbogd2bE/
-* iikoCard API: https://docs.google.com/document/d/1kuhs94UV_0oUkI2CI3uOsNo_dydmh9Q0MFoDWmhzwxc/
-* https://examples.iiko.ru/
+* iikoBiz API: https://docs.google.com/document/d/1pRQNIn46GH1LVqzBUY5TdIIUuSCOl-A_xeCBbogd2bE
+* iikoCard API: https://docs.google.com/document/d/1kuhs94UV_0oUkI2CI3uOsNo_dydmh9Q0MFoDWmhzwxc
+* https://examples.iiko.ru
 
 ## Авторы
 
-Пример разработан в "КвикФуд Технологиях" (https://kvikfud.tech/). "Боевой" вариант применения: http://kvikfud.tech/status/.
+Пример разработан в "КвикФуд Технологиях" (https://kvikfud.tech). "Боевой" вариант применения: http://kvikfud.tech/status.

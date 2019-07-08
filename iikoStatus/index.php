@@ -338,4 +338,3 @@ function showOrderInfo($order, $courier)
   
     echo $result . "<br>";
 }
-?>

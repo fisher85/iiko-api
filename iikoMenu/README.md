@@ -1,18 +1,10 @@
 # iikoMenu
 
-Простой PHP пример выгрузки меню ресторана с использованием API iikoDelivery.
+Выгрузка меню ресторана.
+
 Скрипт удобно использовать для контроля экспорта меню во внешние приложения (интеграции), для просмотра изображений блюд.
 
-## Подключение лицензии Айко
-
-Эксперименты с тестовым аккаунтом можно проводить бесплатно:
-
-- имя пользователя demoDelivery
-- пароль PI1yFaKFCGvvJKi
-
-Для работы со своим заведением доставки потребуется лицензия API iikoDelivery. Инструкция по подключению лицензии: https://ru.iiko.help/articles/#!api-documentations/kak-podkluchit-api.
-Если используется колл-центр, лицензию необходимо добавлять к колл-центру.
-Вместо самостоятельного добавления лицензии настоятельно рекомендуется запросить подключение у вашего менеждера в Айко.
+![iikoBoard](https://github.com/fisher85/iiko-api/blob/master/iikoMenu/iikomenu.png)
 
 ## Алгоритм работы примера
 
@@ -21,12 +13,6 @@
 1. Выгрузка меню (метод nomenclature).
 1. Разбор полученного массива на отдельные блюда, вывод в таблицу. 
 
-## Документация
-
-* iikoBiz API: https://docs.google.com/document/d/1pRQNIn46GH1LVqzBUY5TdIIUuSCOl-A_xeCBbogd2bE
-* iikoCard API: https://docs.google.com/document/d/1kuhs94UV_0oUkI2CI3uOsNo_dydmh9Q0MFoDWmhzwxc
-* https://examples.iiko.ru
-
 ## Авторы
 
-Пример разработан в "КвикФуд Технологиях" (https://kvikfud.tech).
+Пример разработан в "КвикФуд Технологиях" https://kvikfud.tech.

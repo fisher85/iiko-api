@@ -3,7 +3,7 @@
 Монитор загрузки производств.
 Скрипт удобно использовать операторам, принимающим заказы, для контроля загруженности производств, перераспределения заказов, своевременной постановки кухни "на стоп".
 
-![iikoBoard](https://github.com/fisher85/iiko-api/tree/master/iikoBoard/iikoboard.png)
+![iikoBoard](https://github.com/fisher85/iiko-api/blob/master/iikoBoard/iikoboard.png)
 
 ## Алгоритм работы примера
 

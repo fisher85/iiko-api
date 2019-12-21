@@ -305,126 +305,126 @@
     return $result;
   }
 
-function showOrderInfo($order, $courier) 
-{
-  $result = "";
-    
-  $courierPhone = null;
-  if (isset($courier)) $courierPhone = $courier[2];
+  function showOrderInfo($order, $courier) 
+  {
+    $result = "";
       
-  $pickup = false;
-  if ($order['orderType']['name'] === 'Доставка самовывоз') $pickup = true;
+    $courierPhone = null;
+    if (isset($courier)) $courierPhone = $courier[2];
         
-  // Перевод статуса на понятный язык
-  $badgeClass = "";
-  $orderStatusText = "";
-        
-  if ($order['status'] === 'Новая' ||
-      $order['status'] === 'Не подтверждена') {
-        $badgeClass = "badge-info";
-        $orderStatusText = "В обработке";
-  }
+    $pickup = false;
+    if ($order['orderType']['name'] === 'Доставка самовывоз') $pickup = true;
           
-  if ($order['status'] === 'Готовится') {
-    $badgeClass = "badge-warning";
-    $orderStatusText = "Готовится";
-  }
+    // Перевод статуса на понятный язык
+    $badgeClass = "";
+    $orderStatusText = "";
+          
+    if ($order['status'] === 'Новая' ||
+        $order['status'] === 'Не подтверждена') {
+          $badgeClass = "badge-info";
+          $orderStatusText = "В обработке";
+    }
+            
+    if ($order['status'] === 'Готовится') {
+      $badgeClass = "badge-warning";
+      $orderStatusText = "Готовится";
+    }
+          
+    if ($order['status'] === 'Ждет отправки') {
+      $badgeClass = "badge-warning";
+      $orderStatusText = "Готов, ждет отправки";
+    }        
+          
+    if ($order['status'] === 'В пути') {
+      $badgeClass = "badge-warning";
+      $orderStatusText = "В пути, передан курьеру";
+    }
+                
+    if ($order['status'] === 'Готово') {
+      $badgeClass = "badge-success";
+      $orderStatusText = "Готов";
+    }
+          
+    if ($order['status'] === 'Закрыта' ||
+        $order['status'] === 'Доставлена') {
+          $badgeClass = "badge-success";
+          $orderStatusText = "Доставлен";
+          if ($pickup) $orderStatusText = "Готов";
+    }
+          
+    if ($order['status'] === 'Отменена') {
+      $badgeClass = "badge-danger";
+      $orderStatusText = "Отменен";
+    }      
+
+    $result = '<div class="card">';
+    $result .= '<h4 class="card-header">Заказ ' . $order['number'] . 
+      '&nbsp;&mdash; <span class="badge ' . $badgeClass . '">' . $orderStatusText . '</span></h4>';
+
+    $result .= '<ul class="list-group list-group-flush">';        
         
-  if ($order['status'] === 'Ждет отправки') {
-    $badgeClass = "badge-warning";
-    $orderStatusText = "Готов, ждет отправки";
-  }        
+    // Адрес можно показать с номером дома, если еще есть квартиры в доме
+    $address = "не опеределен";
+    if (strlen($order['address']['street']) > 0) {
+      $address = $order['address']['street'];
+      if (strlen($order['address']['home']) > 0 &&
+         (strlen($order['address']['housing']) > 0 ||
+          strlen($order['address']['apartment']) > 0 ||
+          strlen($order['address']['entrance']) > 0 ||
+          strlen($order['address']['floor']) > 0)) 
+            $address .= ', ' . $order['address']['home'];
+    }
         
-  if ($order['status'] === 'В пути') {
-    $badgeClass = "badge-warning";
-    $orderStatusText = "В пути, передан курьеру";
-  }
-              
-  if ($order['status'] === 'Готово') {
-    $badgeClass = "badge-success";
-    $orderStatusText = "Готов";
-  }
+    $result .= '<li class="list-group-item">';
         
-  if ($order['status'] === 'Закрыта' ||
-      $order['status'] === 'Доставлена') {
-        $badgeClass = "badge-success";
-        $orderStatusText = "Доставлен";
-        if ($pickup) $orderStatusText = "Готов";
-  }
+    // Замена первых цифр номера клиента на ***
+    $hiddenPhone = str_pad(
+      substr($order['customer']['phone'], -4), 
+      strlen($order['customer']['phone']), 
+      "*", 
+      STR_PAD_LEFT
+    );
+    $result .= 'Телефон Клиента: ' . $hiddenPhone . '. ';
+
+    if (is_integer(strpos($order['comment'], 'Номер заказа DC:'))) 
+      $result .= 'Заказ из DeliveryClub. ';
         
-  if ($order['status'] === 'Отменена') {
-    $badgeClass = "badge-danger";
-    $orderStatusText = "Отменен";
-  }      
+    if ($pickup) {
+      if (isset($order['deliveryTerminal']['address'])) 
+        $result .= 'Самовывоз, адрес производства: ' . $order['deliveryTerminal']['address'] . '. ';
+      else
+        $result .= 'Самовывоз. ';
+    } else
+      $result .= 'Курьерская доставка по адресу: ' . $address . '. ';
 
-  $result = '<div class="card">';
-  $result .= '<h4 class="card-header">Заказ ' . $order['number'] . 
-    '&nbsp;&mdash; <span class="badge ' . $badgeClass . '">' . $orderStatusText . '</span></h4>';
-
-  $result .= '<ul class="list-group list-group-flush">';        
-      
-  // Адрес можно показать с номером дома, если еще есть квартиры в доме
-  $address = "не опеределен";
-  if (strlen($order['address']['street']) > 0) {
-    $address = $order['address']['street'];
-    if (strlen($order['address']['home']) > 0 &&
-       (strlen($order['address']['housing']) > 0 ||
-        strlen($order['address']['apartment']) > 0 ||
-        strlen($order['address']['entrance']) > 0 ||
-        strlen($order['address']['floor']) > 0)) 
-          $address .= ', ' . $order['address']['home'];
-  }
-      
-  $result .= '<li class="list-group-item">';
-      
-  // Замена первых цифр номера клиента на ***
-  $hiddenPhone = str_pad(
-    substr($order['customer']['phone'], -4), 
-    strlen($order['customer']['phone']), 
-    "*", 
-    STR_PAD_LEFT
-  );
-  $result .= 'Телефон Клиента: ' . $hiddenPhone . '. ';
-
-  if (is_integer(strpos($order['comment'], 'Номер заказа DC:'))) 
-    $result .= 'Заказ из DeliveryClub. ';
-      
-  if ($pickup) {
-    if (isset($order['deliveryTerminal']['address'])) 
-      $result .= 'Самовывоз, адрес производства: ' . $order['deliveryTerminal']['address'] . '. ';
-    else
-      $result .= 'Самовывоз. ';
-  } else
-    $result .= 'Курьерская доставка по адресу: ' . $address . '. ';
-
-  if (isset($order['createdTime']))
-    $result .= '<li class="list-group-item">Принят: ' . showTime($order['createdTime']) . 
-               '. Оператор&nbsp;&mdash; ' . $order['operator']['firstName'] . ' ' . $order['operator']['lastName'] . 
-               ', телефон: <a href="tel:+79997777777">+79997777777</a></li>';
-  
-  if (isset($order['printTime'])) // Время сервисной печати проставляется реальное, но позже, в момент печати накладной
-    $result .= '<li class="list-group-item">Передан на производство: ' . showTime($order['printTime']) . '</li>';
-
-  if (isset($order['sendTime']) && isset($courier))
-    $result .= '<li class="list-group-item">Отправлен с курьером: ' . showTime($order['sendTime']) . 
-               '. Курьер&nbsp;&mdash; ' . $courier[0] . ' ' . $courier[1] . ', телефон: <a href="tel:' . $courierPhone . 
-               '">' . $courierPhone . '</a></li>';
-
-  if (isset($order['deliveryDate'])) {
-    if ($pickup)
-      $result .= '<li class="list-group-item">Расчетное время готовности: ' . showTime($order['deliveryDate']) . '</li>';
-    else
-      $result .= '<li class="list-group-item">Расчетное время доставки: ' . showTime($order['deliveryDate']) . '</li>';
-  }
-      
-  if (isset($order['actualTime']) && ! $pickup)
-    $result .= '<li class="list-group-item">Фактическое время доставки: ' . showTime($order['actualTime']) . '</li>';
+    if (isset($order['createdTime']))
+      $result .= '<li class="list-group-item">Принят: ' . showTime($order['createdTime']) . 
+                 '. Оператор&nbsp;&mdash; ' . $order['operator']['firstName'] . ' ' . $order['operator']['lastName'] . 
+                 ', телефон: <a href="tel:+79997777777">+79997777777</a></li>';
     
-  if (isset($order['billTime']) && $pickup)
-    $result .= '<li class="list-group-item">Приготовлен, ожидает самовывоза: ' . showTime($order['billTime']) . '</li>';
+    if (isset($order['printTime'])) // Время сервисной печати проставляется реальное, но позже, в момент печати накладной
+      $result .= '<li class="list-group-item">Передан на производство: ' . showTime($order['printTime']) . '</li>';
+
+    if (isset($order['sendTime']) && isset($courier))
+      $result .= '<li class="list-group-item">Отправлен с курьером: ' . showTime($order['sendTime']) . 
+                 '. Курьер&nbsp;&mdash; ' . $courier[0] . ' ' . $courier[1] . ', телефон: <a href="tel:' . $courierPhone . 
+                 '">' . $courierPhone . '</a></li>';
+
+    if (isset($order['deliveryDate'])) {
+      if ($pickup)
+        $result .= '<li class="list-group-item">Расчетное время готовности: ' . showTime($order['deliveryDate']) . '</li>';
+      else
+        $result .= '<li class="list-group-item">Расчетное время доставки: ' . showTime($order['deliveryDate']) . '</li>';
+    }
+        
+    if (isset($order['actualTime']) && ! $pickup)
+      $result .= '<li class="list-group-item">Фактическое время доставки: ' . showTime($order['actualTime']) . '</li>';
       
-  $result .= '</ul>';
-  $result .= '</div>';
-  return $result;
-}
+    if (isset($order['billTime']) && $pickup)
+      $result .= '<li class="list-group-item">Приготовлен, ожидает самовывоза: ' . showTime($order['billTime']) . '</li>';
+        
+    $result .= '</ul>';
+    $result .= '</div>';
+    return $result;
+  }
 ?>

@@ -2,7 +2,7 @@
   /*
    * Выгрузка меню ресторана
    *
-   * Пример разработан в "КвикФуд Технологиях": https://kvikfud.tech/
+   * Пример разработан Семёном Фудовым: https://fudov.ru/
    *
    * Больше подробностей в документации:
    * iikoBiz API: https://docs.google.com/document/d/1pRQNIn46GH1LVqzBUY5TdIIUuSCOl-A_xeCBbogd2bE/

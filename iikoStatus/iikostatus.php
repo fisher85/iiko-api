@@ -2,7 +2,7 @@
   /*
    * Проверка статуса заказа Айко по номеру телефона клиента или по номеру заказа
    *
-   * Пример разработан в "КвикФуд Технологиях": https://kvikfud.tech/
+   * Пример разработан Семёном Фудовым: https://fudov.ru/
    *
    * Больше подробностей в документации:
    * iikoBiz API: https://docs.google.com/document/d/1pRQNIn46GH1LVqzBUY5TdIIUuSCOl-A_xeCBbogd2bE/
@@ -180,7 +180,7 @@
             'К сожалению, <strong>не удалось найти ни одного заказа</strong> по указанному номеру.</p>' .
             '<p class="card-text">Если мы ошиблись&nbsp;&mdash; просим созвониться с оператором по телефону ' .
             '<nobr><a href="tel:+79997777777">+7 (999) 777-77-77</a></nobr>.' . 
-            '<p class="card-text">Иначе предлагаем оформить новый заказ <a href="https://kvikfud.tech">здесь</a>!</p>' . 
+            '<p class="card-text">Иначе предлагаем оформить новый заказ <a href="https://fudov.ru">здесь</a>!</p>' . 
             '</div></div>';
           }
         ?>
@@ -204,8 +204,8 @@
     
     <footer class="text-muted">
       <div class="container">
-        <p>Разработка сервиса&nbsp;&mdash; &quot;КвикФуд Технологии&quot;, 2019. <a href="https://github.com/fisher85/iiko-api/tree/master/iikoStatus">Исходный код на GitHub</a></p>
-        <p>Хотите автоматизировать кафе или службу доставки? Пишите&nbsp;&mdash; <a href="mailto:hello@kvikfud.tech">hello@kvikfud.tech</a>. Запускаем Айко (iiko) для приема заказов, подключаем современную IP-телефонию, настраиваем интеграцию с сайтом, DeliveryClub, Яндекс.Едой <a href="https://kvikfud.tech">и не только</a>.</p>
+        <p>Разработка сервиса&nbsp;&mdash; <a href="https://fudov.ru">Семён Фудов</a>, 2019. <a href="https://github.com/fisher85/iiko-api/tree/master/iikoStatus">Исходный код на GitHub</a></p>
+        <p>Хотите автоматизировать кафе или службу доставки? Пишите&nbsp;&mdash; <a href="mailto:hello@fudov.ru">hello@fudov.ru</a>. Запускаем Айко (iiko) для приема заказов, подключаем современную IP-телефонию, настраиваем интеграцию с сайтом, DeliveryClub, Яндекс.Едой и не только.</p>
       </div>
     </footer>
     

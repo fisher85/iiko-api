@@ -1,0 +1,54 @@
+{
+  "reportType": "SALES",
+  "buildSummary": "false",
+  "groupByRowFields": [
+    "Department.Id",
+    "OpenDate.Typed",
+    "Delivery.Number",
+    "OpenTime",
+    "Delivery.PrintTime",
+    "Delivery.BillTime",
+    "PrechequeTime",
+    "Delivery.CookingFinishTime",
+    "Delivery.SendTime",
+    "Delivery.ActualTime",
+    "Delivery.CloseTime",
+    "CloseTime",
+    "Delivery.WayDuration",
+    "OrderTime.OrderLength",
+    "Delivery.Delay",
+    "Delivery.DiffBetweenActualDeliveryTimeAndPredictedDeliveryTime",
+    "Delivery.ExpectedTime",
+    "Delivery.PredictedDeliveryTime",
+    "Delivery.PredictedCookingCompleteTime",
+    "Delivery.CustomerName",
+    "Delivery.CustomerPhone",
+    "OrderServiceType"
+  ],
+  "groupByColFields": [
+  ],
+  "aggregateFields": [
+  ],
+  "filters": {
+    "OpenDate.Typed": {
+      "filterType": "DateRange",
+      "periodType": "CUSTOM",
+      "from": "2022-02-01",
+      "to": "2022-02-01",
+      "includeLow": "true",
+      "includeHigh": "true"
+    },
+    "OrderDeleted": {
+      "filterType": "IncludeValues",
+      "values": ["NOT_DELETED"]
+    },
+    "OrderServiceType": {
+      "filterType": "IncludeValues",
+      "values": ["DELIVERY_BY_COURIER"]
+    },
+    "OperationType": {
+      "filterType": "ExcludeValues",
+      "values": ["STORNED", "NO_PAYMENT"]
+    }
+  }
+}

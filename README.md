@@ -1,12 +1,13 @@
 # iiko-api
-Примеры PHP скриптов для работы с API системы автоматизации ресторанов iiko ("Айко").
+
+Примеры PHP и Python скриптов для работы с API системы автоматизации ресторанов iiko ("Айко").
 
 ## Подключение лицензии Айко API iikoDelivery
 
 Эксперименты с тестовым аккаунтом API iikoDelivery можно проводить бесплатно:
 
-- имя пользователя demoDelivery
-- пароль PI1yFaKFCGvvJKi
+- имя пользователя `demoDelivery`
+- пароль `PI1yFaKFCGvvJKi`
 
 Для работы со своим заведением доставки потребуется лицензия API iikoDelivery. Инструкция по подключению лицензии: https://ru.iiko.help/articles/#!api-documentations/kak-podkluchit-api.
 Если используется колл-центр, лицензию необходимо добавлять к колл-центру.
@@ -14,9 +15,9 @@
 
 ## Документация
 
-* iikoBiz API: https://docs.google.com/document/d/1pRQNIn46GH1LVqzBUY5TdIIUuSCOl-A_xeCBbogd2bE
-* iikoCard API: https://docs.google.com/document/d/1kuhs94UV_0oUkI2CI3uOsNo_dydmh9Q0MFoDWmhzwxc
-* https://examples.iiko.ru
+- iikoBiz API: https://docs.google.com/document/d/1pRQNIn46GH1LVqzBUY5TdIIUuSCOl-A_xeCBbogd2bE
+- iikoCard API: https://docs.google.com/document/d/1kuhs94UV_0oUkI2CI3uOsNo_dydmh9Q0MFoDWmhzwxc
+- https://examples.iiko.ru
 
 ## Исправление ошибок
 
@@ -24,6 +25,8 @@
 
 ## Авторы
 
-Пример разработан Семёном Фудовым https://fudov.ru.
+Пример разработан Семёном Фудовым https://fudov.ru
 
 Хабр: [Как мы делаем доставку еды на Айко](https://habr.com/ru/post/481450/)
+
+Блог Семёна Фудова про интеграции с ресторанными системами учёта: https://blog.fudov.ru
